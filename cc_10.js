@@ -80,6 +80,15 @@ class Inventory {
     listOrders() {
         this.orders.forEach(order => console.log(order.getOrderDetails()));
     }
+    restockProduct(productId, quantity) {
+        let index = this.products.findIndex((element) => element.id === productId);
+        if (index == -1){
+            console.log("Product Not Found");
+        }
+        else {
+        this.products[index].stock += quantity;
+        }
+    }
 }
 
 const inventory = new Inventory();
@@ -94,7 +103,21 @@ inventory.listProducts();
 console.log("--------------------------------------");
 console.log("Task 4: Implementing Order Management");
 
+// Added placeOrder method to Inventory class
+
 inventory.placeOrder(601, prod1, 2);
 inventory.listOrders();
+console.log(prod1.getDetails());
+
+/////////////////////////////////////////////
+// Task 5: Implementing Product Restocking //
+/////////////////////////////////////////////
+
+console.log("--------------------------------------");
+console.log("Task 5: Implementing Product Restocking");
+
+// Added restockProduct method to Inventory class
+
+inventory.restockProduct(101, 5);
 console.log(prod1.getDetails());
 
