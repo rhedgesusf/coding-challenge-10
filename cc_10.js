@@ -65,6 +65,11 @@ console.log("Task 3: Creating an Inventory Class");
 class Inventory {
     
     products = [];
+    orders = [];
+    
+    placeOrder(orderId, product, quantity) {
+        this.orders.push(new Order(orderId, product, quantity));
+    }
     
     addProduct(product) {
         this.products.push(product)
@@ -72,8 +77,24 @@ class Inventory {
     listProducts() {
         this.products.forEach(product => console.log(product.getDetails()));
     }
+    listOrders() {
+        this.orders.forEach(order => console.log(order.getOrderDetails()));
+    }
 }
 
 const inventory = new Inventory();
 inventory.addProduct(prod1);
 inventory.listProducts();
+
+
+///////////////////////////////////////////
+// Task 4: Implementing Order Management //
+///////////////////////////////////////////
+
+console.log("--------------------------------------");
+console.log("Task 4: Implementing Order Management");
+
+inventory.placeOrder(601, prod1, 2);
+inventory.listOrders();
+console.log(prod1.getDetails());
+
